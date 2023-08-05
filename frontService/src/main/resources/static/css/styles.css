@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+}
+
+label {
+    margin: 0;
+    padding: 0;
+}
+
+.flex-container {
+    display: flex;
+    flex: 1;
+    transition: transform 0.2s;
+}
+
+div.row:first-of-type {
+    display: flex;
+}
+
+.custom-color-1{
+    align-items: center;
+    justify-content: center;
+    background-image: url("../images/about.jpg");
+    background-size: cover;
+    background-position: center center;
+    opacity: 0.95;
+}
+
+.custom-color-2{
+    align-items: center;
+    justify-content: center;
+    background-image: url("../images/code.JPG");
+    background-size: cover;
+    background-position: center center;
+    opacity: 0.95;
+}
+
+.custom-color-1.flex-container:hover, .custom-color-2.flex-container:hover{
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+.custom-link {
+    color: #DDDDDD;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.custom-link:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+}
