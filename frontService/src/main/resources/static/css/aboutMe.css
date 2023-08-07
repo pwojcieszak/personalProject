@@ -18,6 +18,7 @@ label {
 .section-header {
     font-size: 5rem;
     padding-bottom: 5%;
+    display: block;
 }
 
 /* Containers */
@@ -39,6 +40,29 @@ label {
 .white-section {
     background-color: #fff;
     color: #564943;
+}
+
+/* about */
+#about {
+    text-align: left;
+}
+
+.flex-container {
+    display: flex;
+    flex: 1;
+    transition: transform 0.2s;
+}
+
+#about p {
+    text-align: justify;
+}
+
+.img-wrapper img{
+    height: auto;
+    width: auto;
+    max-width: 450px;
+    max-height: 450px;
+    margin: auto;
 }
 
 /* works */
