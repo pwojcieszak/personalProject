@@ -1,0 +1,77 @@
+body {
+    text-align: center;
+}
+
+.navbar, .footer {
+    background-color: #34302D;
+}
+
+label {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar{
+    margin-bottom: 3rem;
+}
+
+.section-header {
+    font-size: 5rem;
+    padding-bottom: 5%;
+}
+
+/* Containers */
+.container-fluid{
+    padding: 7% 15%;
+}
+
+/* Sections */
+.green-section {
+    background-color: #6CB33E;
+    color: #fff;
+}
+
+.grey-section {
+    background-color: #564943;
+    color: #fff;
+}
+
+.white-section {
+    background-color: #fff;
+    color: #564943;
+}
+
+/* works */
+.work-text {
+    font-size: 2rem;
+    line-height: 1.5;
+}
+
+/* Certificates */
+
+.certificate-box {
+    padding: 4.5%;
+}
+
+#certificates .fa-solid {
+    color: #564943;
+    margin-bottom: 1rem;
+}
+
+#certificates .fa-solid:hover {
+    color: #34302D;
+}
+
+.certificate-title {
+    font-size: 2rem;
+}
+
+.certificates p {
+    font-size: 1rem;
+}
+
+/* Footer */
+.social-icon {
+    margin: 20px 20px;
+    color: #6CB33E;
+}

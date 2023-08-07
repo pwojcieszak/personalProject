@@ -9,4 +9,9 @@ public class frontServiceController {
     public String getMainPage(){
         return "index";
     }
+
+    @GetMapping("/aboutMe")
+    public String getAboutMe(){
+        return "aboutMe";
+    }
 }
