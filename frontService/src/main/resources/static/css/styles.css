@@ -7,6 +7,10 @@ body {
     align-items: center;
 }
 
+.navbar, .footer {
+    background-color: #34302D;
+}
+
 label {
     margin: 0;
     padding: 0;
@@ -16,10 +20,6 @@ label {
     display: flex;
     flex: 1;
     transition: transform 0.2s;
-}
-
-div.row:first-of-type {
-    display: flex;
 }
 
 .custom-color-1{
