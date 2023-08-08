@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/skills-service
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: zaq1@WSX
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8081
