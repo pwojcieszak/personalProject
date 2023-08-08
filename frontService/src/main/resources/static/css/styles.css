@@ -54,3 +54,9 @@ label {
     color: #FFFFFF;
     text-decoration: none;
 }
+
+/* Footer */
+.social-icon {
+    margin: 20px 20px;
+    color: #6CB33E;
+}
