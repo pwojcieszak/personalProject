@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>frontService</module>
+        <module>skillsService</module>
     </modules>
 
     <properties>
@@ -38,6 +39,14 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring.boot.maven.plugin.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
             </plugin>
         </plugins>
     </build>
