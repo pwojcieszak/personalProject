@@ -21,7 +21,10 @@ public class FrontService {
         Mono<List<SkillsResponse>> skillsMono = webClient.get()
                 .uri("/skills/all")
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<List<SkillsResponse>>() {});
+                .bodyToMono(new ParameterizedTypeReference<List<SkillsResponse>>() {})
+                .onErrorResume(throwable -> {
+                    return Mono.just(Collections.emptyList());
+                });
 
         return skillsMono.blockOptional()
                 .orElse(Collections.emptyList());
