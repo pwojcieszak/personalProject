@@ -64,7 +64,7 @@
             </div>
 
             <div class="col-lg-6 flex-container img-wrapper">
-                <img th:src="@{../images/me.jpg}"/>
+                <img th:src="@{../images/me.jpg}" alt="Photo of me"/>
             </div>
         </div>
     </div>
@@ -121,10 +121,46 @@
             <div class="col-lg-4 ">
                 <i class="fa-solid fa-layer-group fa-4x"></i>
                 <h3 class="certificate-title">English C1 Level</h3>
-                <p>Course completed as a part of my studies</p>
+                <p>Course completed as a part of my studies. Organized by Jagiellonian Language Center (JCJ).</p>
             </div>
         </div>
     </div>
+</section>
+
+<section id="skills" class="white-section">
+	<div class="container-fluid">
+		<h2 class="section-header">List of Skills</h2>
+		<div class="container">
+			<!--TODO after implementing api gateway implement add new option-->
+<!--			<div class="row">-->
+<!--				<div class="col-lg-3">-->
+<!--					<a th:href="@{/students/new}" class="btn btn-primary btn-sm mb-3">Add Student</a>-->
+<!--				</div>-->
+<!--			</div>-->
+			<table class="table table-striped table-bordered">
+				<thead class="table-dark">
+				<tr>
+					<th> Skill Category</th>
+					<th> Skill Name</th>
+					<th> Skill Description</th>
+					<th> Actions</th>
+				</tr>
+				</thead>
+
+				<tbody>
+				<tr th:each = "skill: ${skills}">
+					<td th:text = "${skill.category()}"></td>
+					<td th:text = "${skill.name()}"></td>
+					<td th:text = "${skill.description()}"></td>
+					<!--TODO after implementing api gateway implement delete option-->
+					<td>
+						<a th:href="@{/skills/delete/{name}(name=${skill.name()})}" class="btn btn-danger">Delete</a>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </section>
 
 
