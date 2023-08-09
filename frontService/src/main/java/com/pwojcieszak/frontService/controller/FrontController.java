@@ -1,4 +1,4 @@
-package com.pwojcieszak.frontService.Controller;
+package com.pwojcieszak.frontService.controller;
 
 import com.pwojcieszak.frontService.service.FrontService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -11,15 +11,16 @@ import java.util.List;
 
 @Service
 public class FrontService {
-    private final WebClient webClient;
+    private final WebClient.Builder webClientBuilder;
 
     public FrontService(WebClient.Builder webClientBuilder) {
-        this.webClient = webClientBuilder.baseUrl("http://localhost:8081").build();
+        this.webClientBuilder = webClientBuilder;
     }
 
+
     public List<SkillsResponse> getAllSkills() {
-        Mono<List<SkillsResponse>> skillsMono = webClient.get()
-                .uri("/api/skills/all")
+        Mono<List<SkillsResponse>> skillsMono = webClientBuilder.build().get()
+                .uri("http://SKILLS-SERVICE/api/skills/all")
                 .retrieve()
                 .bodyToMono(new ParameterizedTypeReference<List<SkillsResponse>>() {})
                 .onErrorResume(throwable -> {
