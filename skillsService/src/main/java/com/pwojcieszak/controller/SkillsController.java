@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/skills")
+@RequestMapping("/api/skills")
 @RequiredArgsConstructor
 public class SkillsController {
     private final SkillsService skillsService;

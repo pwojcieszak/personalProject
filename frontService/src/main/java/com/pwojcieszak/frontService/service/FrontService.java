@@ -19,7 +19,7 @@ public class FrontService {
 
     public List<SkillsResponse> getAllSkills() {
         Mono<List<SkillsResponse>> skillsMono = webClient.get()
-                .uri("/skills/all")
+                .uri("/api/skills/all")
                 .retrieve()
                 .bodyToMono(new ParameterizedTypeReference<List<SkillsResponse>>() {})
                 .onErrorResume(throwable -> {
