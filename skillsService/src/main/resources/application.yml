@@ -11,7 +11,7 @@ spring:
     name: skills-service
 
 server:
-  port: 8081
+  port: 0
 
 eureka:
   client:
