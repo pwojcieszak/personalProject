@@ -153,11 +153,14 @@
 					<td th:text = "${skill.name()}"></td>
 					<td th:text = "${skill.description()}"></td>
 					<td>
-						<a th:href="@{/api/skills/delete/{name}(name=${skill.name()})}" class="btn btn-danger">Delete</a>
+						<a th:href="@{/front/skills/delete/{name}(name=${skill.name()})}" class="btn btn-danger">Delete</a>
 					</td>
 				</tr>
 				</tbody>
 			</table>
+			<p th:if="${result}">
+				<span th:text="${result}"></span>
+			</p>
 		</div>
 	</div>
 </section>

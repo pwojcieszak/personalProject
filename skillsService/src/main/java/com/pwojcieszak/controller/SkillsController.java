@@ -5,6 +5,7 @@ import com.pwojcieszak.model.Skill;
 import com.pwojcieszak.service.SkillsService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,10 +35,10 @@ public class SkillsController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{name}")
     @Transactional
-    public ResponseEntity<Integer> deleteSkillByName(@RequestParam(name = "name") String name) {
+    public ResponseEntity<Integer> deleteSkillByName(@PathVariable String name) {
         Integer numberOfRowsDeleted =  skillsService.deleteSkillByName(name);
-        return new ResponseEntity<>(numberOfRowsDeleted, HttpStatus.OK);
+        return ResponseEntity.ok().body(numberOfRowsDeleted);
     }
 }

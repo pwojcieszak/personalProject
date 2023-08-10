@@ -30,4 +30,19 @@ public class FrontService {
         return skillsMono.blockOptional()
                 .orElse(Collections.emptyList());
     }
+
+    public Boolean deleteSkill(String name) {
+        Mono<Integer> skillsMono = webClientBuilder.build().delete()
+                .uri("http://SKILLS-SERVICE/api/skills/delete/{name}", name)
+                .retrieve()
+                .bodyToMono(Integer.class)
+                .onErrorResume(throwable -> {
+                    return Mono.just(0);
+                });
+
+        int result = skillsMono.blockOptional()
+                        .orElse(0);
+        if(result == 0) return false;
+        else return true;
+    }
 }
