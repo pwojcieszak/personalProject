@@ -25,17 +25,17 @@
         <ul class="navbar-nav">
             <li class="nav-item">
                 <label>
-                    <a class="nav-link" th:href="@{/}">Main Page</a>
+                    <a class="nav-link" th:href="@{/front/}">Main Page</a>
                 </label>
             </li>
             <li class="nav-item">
                 <label>
-                    <a class="nav-link" th:href="@{/aboutMe}">About Me</a>
+                    <a class="nav-link" th:href="@{/front/aboutMe}">About Me</a>
                 </label>
             </li>
             <li class="nav-item">
                 <label>
-                    <a class="nav-link" th:href="@{/aboutProject}">About this Project</a>
+                    <a class="nav-link" th:href="@{/front/aboutProject}">About this Project</a>
                 </label>
             </li>
         </ul>
@@ -152,9 +152,8 @@
 					<td th:text = "${skill.category()}"></td>
 					<td th:text = "${skill.name()}"></td>
 					<td th:text = "${skill.description()}"></td>
-					<!--TODO after implementing api gateway implement delete option-->
 					<td>
-						<a th:href="@{/skills/delete/{name}(name=${skill.name()})}" class="btn btn-danger">Delete</a>
+						<a th:href="@{/api/skills/delete/{name}(name=${skill.name()})}" class="btn btn-danger">Delete</a>
 					</td>
 				</tr>
 				</tbody>
