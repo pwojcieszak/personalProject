@@ -12,6 +12,7 @@
         <module>frontService</module>
         <module>skillsService</module>
         <module>discovery-service</module>
+        <module>api-gateway</module>
     </modules>
 
     <properties>
