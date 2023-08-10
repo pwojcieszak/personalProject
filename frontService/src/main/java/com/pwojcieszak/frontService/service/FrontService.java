@@ -23,9 +23,7 @@ public class FrontService {
                 .uri("http://SKILLS-SERVICE/api/skills/all")
                 .retrieve()
                 .bodyToMono(new ParameterizedTypeReference<List<SkillsResponse>>() {})
-                .onErrorResume(throwable -> {
-                    return Mono.just(Collections.emptyList());
-                });
+                .onErrorResume(throwable -> Mono.just(Collections.emptyList()));
 
         return skillsMono.blockOptional()
                 .orElse(Collections.emptyList());
@@ -36,13 +34,10 @@ public class FrontService {
                 .uri("http://SKILLS-SERVICE/api/skills/delete/{name}", name)
                 .retrieve()
                 .bodyToMono(Integer.class)
-                .onErrorResume(throwable -> {
-                    return Mono.just(0);
-                });
+                .onErrorResume(throwable -> Mono.just(0));
 
         int result = skillsMono.blockOptional()
                         .orElse(0);
-        if(result == 0) return false;
-        else return true;
+        return result != 0;
     }
 }
