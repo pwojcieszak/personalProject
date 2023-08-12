@@ -1,8 +1,10 @@
 package com.pwojcieszak.frontService.service;
 
+import com.pwojcieszak.frontService.dto.SkillsRequest;
 import com.pwojcieszak.frontService.dto.SkillsResponse;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
@@ -39,5 +41,17 @@ public class FrontService {
         int result = skillsMono.blockOptional()
                         .orElse(0);
         return result != 0;
+    }
+
+    public boolean createSkill(SkillsRequest skillsRequest) {
+        Mono<Boolean> skillsMono = webClientBuilder.build().post()
+                .uri("http://SKILLS-SERVICE/api/skills/requestNew")
+                .body(BodyInserters.fromValue(skillsRequest))
+                .retrieve()
+                .bodyToMono(Boolean.class)
+                .onErrorResume(throwable -> Mono.just(false));
+
+        return skillsMono.blockOptional()
+                .orElse(false);
     }
 }
