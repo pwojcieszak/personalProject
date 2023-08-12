@@ -94,8 +94,19 @@ label {
     font-size: 1rem;
 }
 
+/* Skills */
+
 /* Footer */
 .social-icon {
     margin: 20px 20px;
     color: #6CB33E;
+}
+
+/* New Skill Form */
+#createSkill h1 {
+    margin-top: 3%;
+}
+
+.form-group{
+    text-align: left;
 }

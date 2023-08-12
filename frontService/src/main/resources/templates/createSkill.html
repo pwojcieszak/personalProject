@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Piotr Wojcieszak</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link th:href="@{/css/aboutMe.css}" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/43124feaf5.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top">
+    <!-- Brand -->
+    <label>
+        <a class="navbar-brand" href="#">Piotr Wojcieszak</a>
+    </label>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <label>
+                    <a class="nav-link" th:href="@{/front/}">Main Page</a>
+                </label>
+            </li>
+            <li class="nav-item">
+                <label>
+                    <a class="nav-link" th:href="@{/front/aboutMe}">About Me</a>
+                </label>
+            </li>
+            <li class="nav-item">
+                <label>
+                    <a class="nav-link" th:href="@{/front/aboutProject}">About this Project</a>
+                </label>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+
+<!-- New Skill Form -->
+<section id="createSkill" class="white-section">
+    <div class="container">
+        <div class="row container-fluid">
+            <div class="col-lg6 col-md-6 col-sm-6 container justify-content-center card">
+                <h1 class="text-center">Create New Skill</h1>
+                <div class="card-body">
+                    <form th:action="@{/aboutMe}" th:object="${skill}" method="post">
+                        <div class="form-group">
+                            <label>Skill name</label>
+                            <input type="text" name="skillName"
+                                   th:field="*{name}"
+                                   placeholder="Enter Skill Name"
+                                   class="form-control"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Skill Category</label>
+                            <input type="text" name="skillCategory"
+                                   th:field="*{category}"
+                                   placeholder="Enter Skill Category"
+                                   class="form-control"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Skill Description</label>
+                            <input type="text" name="skillDescription"
+                                   th:field="*{description}"
+                                   placeholder="Enter Skill Description"
+                                   class="form-control"/>
+                        </div>
+
+                        <div class = "box-footer">
+                            <button type="submit" class = "btn btn-primary">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer class="footer text-light text-center py-3">
+    <div class="container-fluid">
+        <a href="https://github.com/pwojcieszak?tab=repositories">
+            <i class="social-icon fa-brands fa-github fa-xl"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/piotr-wojcieszak-792693276/">
+            <i class="social-icon fa-brands fa-gitlab fa-xl"></i>
+        </a>
+        <a href="https://gitlab.com/users/piotrwojcieszak/projects">
+            <i class="social-icon fa-brands fa-linkedin fa-xl"></i>
+        </a>
+        <a href="mailto: piotrekw1002@gmail.com">
+            <i class="social-icon fa-solid fa-envelope fa-xl"></i>
+        </a>
+        <p>&copy; 2023 Piotr Wojcieszak. All rights reserved.</p>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+</body>
+</html>
