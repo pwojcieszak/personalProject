@@ -1,6 +1,8 @@
 package com.pwojcieszak.frontService.controller;
 
 import com.pwojcieszak.frontService.dto.SkillsRequest;
+import com.pwojcieszak.frontService.security.auth.AuthenticationRequest;
+import com.pwojcieszak.frontService.security.auth.RegisterRequest;
 import com.pwojcieszak.frontService.service.FrontService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -57,5 +59,19 @@ public class FrontController {
             redirectAttributes.addFlashAttribute("result", "Something went wrong");
         }
         return "redirect:http://localhost:8080/front/aboutMe";
+    }
+
+    @GetMapping("/login")
+    public String login(Model model){
+        AuthenticationRequest authenticationRequest = new AuthenticationRequest();
+        model.addAttribute("authReq", authenticationRequest);
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String register(Model model){
+        RegisterRequest registerRequest = new RegisterRequest();
+        model.addAttribute("regReq", registerRequest);
+        return "register";
     }
 }
