@@ -3,6 +3,7 @@ package com.pwojcieszak.frontService.service;
 import com.pwojcieszak.frontService.dto.SkillsRequest;
 import com.pwojcieszak.frontService.dto.SkillsResponse;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -32,15 +33,15 @@ public class FrontService {
     }
 
     public Boolean deleteSkill(String name) {
-        Mono<Integer> skillsMono = webClientBuilder.build().delete()
+        Mono<Boolean> skillsMono = webClientBuilder.build().delete()
                 .uri("http://SKILLS-SERVICE/api/skills/delete/{name}", name)
                 .retrieve()
-                .bodyToMono(Integer.class)
-                .onErrorResume(throwable -> Mono.just(0));
+                .toBodilessEntity()
+                .map(responseEntity -> responseEntity.getStatusCode() == HttpStatus.OK)
+                .defaultIfEmpty(false);
 
-        int result = skillsMono.blockOptional()
-                        .orElse(0);
-        return result != 0;
+        return skillsMono.blockOptional()
+                        .orElse(false);
     }
 
     public boolean createSkill(SkillsRequest skillsRequest) {

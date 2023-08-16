@@ -36,8 +36,8 @@ public class SkillsController {
 
     @DeleteMapping("/delete/{name}")
     @Transactional
-    public ResponseEntity<Integer> deleteSkillByName(@PathVariable String name) {
-        Integer numberOfRowsDeleted =  skillsService.deleteSkillByName(name);
-        return ResponseEntity.ok().body(numberOfRowsDeleted);
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteSkillByName(@PathVariable String name) {
+        skillsService.deleteSkillByName(name);
     }
 }

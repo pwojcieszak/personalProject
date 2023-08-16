@@ -31,8 +31,8 @@ public class SkillsService {
         return Optional.of(createdSkill);
     }
 
-    public Integer deleteSkillByName(String name) {
-        return skillsRepository.deleteByName(name);
+    public void deleteSkillByName(String name) {
+        skillsRepository.deleteByName(name);
     }
 
 
