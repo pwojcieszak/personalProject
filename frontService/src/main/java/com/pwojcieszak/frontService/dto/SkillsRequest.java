@@ -1,7 +1,10 @@
 package com.pwojcieszak.frontService.dto;
 
-public record SkillsRequest(String name, String category, String description) {
-    public SkillsRequest() {
-        this("","","");
-    }
+import lombok.Data;
+
+@Data
+public class SkillsRequest {
+    private String name;
+    private String category;
+    private String description;
 }

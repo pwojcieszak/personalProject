@@ -45,12 +45,11 @@ public class FrontService {
 
     public boolean createSkill(SkillsRequest skillsRequest) {
         Mono<Boolean> skillsMono = webClientBuilder.build().post()
-                .uri("http://SKILLS-SERVICE/api/skills/requestNew")
+                .uri("http://SKILLS-SERVICE/api/skills/new")
                 .body(BodyInserters.fromValue(skillsRequest))
                 .retrieve()
                 .bodyToMono(Boolean.class)
                 .onErrorResume(throwable -> Mono.just(false));
-
         return skillsMono.blockOptional()
                 .orElse(false);
     }

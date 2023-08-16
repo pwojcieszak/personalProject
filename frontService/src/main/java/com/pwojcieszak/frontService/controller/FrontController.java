@@ -52,7 +52,7 @@ public class FrontController {
         boolean success = frontService.createSkill(skillsRequest);
 
         if (success) {
-            redirectAttributes.addFlashAttribute("result", "Successfully deleted selected skill");
+            redirectAttributes.addFlashAttribute("result", "Successfully added skill");
         } else {
             redirectAttributes.addFlashAttribute("result", "Something went wrong");
         }

@@ -50,10 +50,10 @@
             <div class="col-lg6 col-md-6 col-sm-6 container justify-content-center card">
                 <h1 class="text-center">Create New Skill</h1>
                 <div class="card-body">
-                    <form th:action="@{/aboutMe}" th:object="${skill}" method="post">
+                    <form th:action="@{/front/aboutMe}" th:object="${skill}" method="post">
                         <div class="form-group">
                             <label>Skill name</label>
-                            <input type="text" name="skillName"
+                            <input type="text" name="name"
                                    th:field="*{name}"
                                    placeholder="Enter Skill Name"
                                    class="form-control"/>
@@ -61,7 +61,7 @@
 
                         <div class="form-group">
                             <label>Skill Category</label>
-                            <input type="text" name="skillCategory"
+                            <input type="text" name="category"
                                    th:field="*{category}"
                                    placeholder="Enter Skill Category"
                                    class="form-control"/>
@@ -69,7 +69,7 @@
 
                         <div class="form-group">
                             <label>Skill Description</label>
-                            <input type="text" name="skillDescription"
+                            <input type="text" name="description"
                                    th:field="*{description}"
                                    placeholder="Enter Skill Description"
                                    class="form-control"/>

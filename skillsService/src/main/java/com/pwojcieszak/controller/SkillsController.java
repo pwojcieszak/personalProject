@@ -25,13 +25,13 @@ public class SkillsController {
     }
 
     @PostMapping("/new")
-    public ResponseEntity<Skill> createNewSkill(@RequestBody Skill skill) {
+    public ResponseEntity<Boolean> createNewSkill(@RequestBody Skill skill) {
         Optional<Skill> answer = skillsService.createNewSkill(skill);
 
         if(answer.isPresent())
-            return new ResponseEntity<>(answer.get(), HttpStatus.CREATED);
+            return new ResponseEntity<>(true, HttpStatus.CREATED);
         else
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @DeleteMapping("/delete/{name}")
