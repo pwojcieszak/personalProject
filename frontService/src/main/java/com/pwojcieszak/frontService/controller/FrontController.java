@@ -3,6 +3,7 @@ package com.pwojcieszak.frontService.controller;
 import com.pwojcieszak.frontService.dto.SkillsRequest;
 import com.pwojcieszak.frontService.service.FrontService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class FrontController {
         this.frontService = frontService;
     }
 
-    @GetMapping("/")
+    @GetMapping()
     public String getMainPage(){
         return "index";
     }
@@ -30,6 +31,7 @@ public class FrontController {
     }
 
     @GetMapping("/skills/delete/{name}")
+    @PreAuthorize("hasRole('client_admin')")
     public String deleteSkill(@PathVariable String name, RedirectAttributes redirectAttributes){
         boolean success = frontService.deleteSkill(name);
         if (success) {
@@ -41,6 +43,7 @@ public class FrontController {
     }
 
     @GetMapping("/skills/new")
+    @PreAuthorize("hasRole('client_admin')")
     public String createSkillFrom(Model model) {
         SkillsRequest skillRequest = new SkillsRequest();
         model.addAttribute("skill", skillRequest);
@@ -48,6 +51,7 @@ public class FrontController {
     }
 
     @PostMapping("/aboutMe")
+    @PreAuthorize("hasRole('client_admin')")
     public String saveStudent(@ModelAttribute("skill") SkillsRequest skillsRequest, RedirectAttributes redirectAttributes) {
         boolean success = frontService.createSkill(skillsRequest);
 
