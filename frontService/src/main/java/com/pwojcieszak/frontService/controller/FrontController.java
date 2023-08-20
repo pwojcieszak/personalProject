@@ -18,7 +18,7 @@ public class FrontController {
         this.frontService = frontService;
     }
 
-    @GetMapping()
+    @GetMapping("/")
     public String getMainPage(){
         return "index";
     }
@@ -43,7 +43,7 @@ public class FrontController {
     }
 
     @GetMapping("/skills/new")
-    @PreAuthorize("hasRole('client_admin')")
+    //@PreAuthorize("hasRole('client_admin')")
     public String createSkillFrom(Model model) {
         SkillsRequest skillRequest = new SkillsRequest();
         model.addAttribute("skill", skillRequest);
@@ -51,7 +51,7 @@ public class FrontController {
     }
 
     @PostMapping("/aboutMe")
-    @PreAuthorize("hasRole('client_admin')")
+    //@PreAuthorize("hasRole('client_admin')")
     public String saveStudent(@ModelAttribute("skill") SkillsRequest skillsRequest, RedirectAttributes redirectAttributes) {
         boolean success = frontService.createSkill(skillsRequest);
 
