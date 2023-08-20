@@ -1,52 +1,53 @@
 package com.pwojcieszak.frontService.security;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
-
-import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @Configuration
-@EnableWebSecurity
-@EnableMethodSecurity
-@RequiredArgsConstructor
 public class SecurityConfig {
-    private final JwtAuthConverter jwtAuthConverter;
-    @Value("${spring.security.login-page}")
-    private String loginPage;
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(request -> request
+    public UserDetailsService userDetailsService() {
+        UserDetailsManager userDetailsManager =
+                new InMemoryUserDetailsManager();
+        userDetailsManager.createUser(
+                User.withDefaultPasswordEncoder()
+                        .username("user")
+                        .password("user")
+                        .roles("USER")
+                        .build());
+        userDetailsManager.createUser(
+                User.withDefaultPasswordEncoder()
+                        .username("admin")
+                        .password("admin")
+                        .roles("ADMIN")
+                        .build());
+        return userDetailsManager;
+    }
+
+    @Bean
+    SecurityFilterChain configureSecurity(HttpSecurity http)
+            throws Exception {
+        http.authorizeHttpRequests(customizer -> customizer
+                        .requestMatchers("/front/skills/**")
+                        .hasRole("ADMIN")
                         .anyRequest().permitAll()
+                );
+        http
+                .formLogin(customizer -> customizer
+                        .defaultSuccessUrl("/")
                 )
-//                .oauth2Login(configurer -> configurer
-//                        .loginPage("http://localhost:8181/realms/personal-project-realm/protocol/openid-connect/auth")
-//                )
-                .httpBasic(configurer -> configurer
-                        .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint(loginPage))
+                .httpBasic(Customizer.withDefaults())
+                .logout(customizer -> customizer
+                        .logoutSuccessUrl("/")
                 );
 
-        http
-                .oauth2ResourceServer(server -> server
-                                .jwt(jwtConfigurer -> jwtConfigurer
-                                        .jwtAuthenticationConverter(jwtAuthConverter)
-                                )
-                );
-
-
-        http
-                .sessionManagement(customizer -> customizer
-                        .sessionCreationPolicy(STATELESS)
-                );
 
         return http.build();
     }
