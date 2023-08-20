@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Piotr Wojcieszak</title>
@@ -40,6 +40,8 @@
 			</li>
         </ul>
     </div>
+	<a class="nav-item nav-link btn btn-warning" sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>
+	<a class="nav-item nav-link btn btn-success" sec:authorize="isAnonymous()" th:href="@{/login}">Login</a>
 </nav>
 <br>
 <div class="container-fluid flex-container">
