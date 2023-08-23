@@ -34,6 +34,7 @@ services:
 
   ## Mailhog
   mailhog:
+    container_name: mailhog
     image: mailhog/mailhog
     ports:
       - 1025:1025 # SMTP server ports
