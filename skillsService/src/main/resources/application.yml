@@ -10,6 +10,14 @@ spring:
     show-sql: true
   application:
     name: skills-service
+    ## Kafka properties
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.type.mapping: event:com.pwojcieszak.event.SkillCreatedEvent
 server:
   port: 0
 

@@ -1,9 +1,11 @@
 package com.pwojcieszak.service;
 
 import com.pwojcieszak.dto.SkillsResponse;
+import com.pwojcieszak.event.SkillCreatedEvent;
 import com.pwojcieszak.model.Skill;
 import com.pwojcieszak.repository.SkillsRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class SkillsService {
     private final SkillsRepository skillsRepository;
+    private final KafkaTemplate<String, SkillCreatedEvent> kafkaTemplate;
     public List<SkillsResponse> findAllSkills() {
         return skillsRepository.findAll().stream()
                 .map(skill ->
@@ -27,6 +30,8 @@ public class SkillsService {
 
     public Optional<Skill> createNewSkill(Skill skill) {
         Skill createdSkill =  skillsRepository.save(skill);
+
+        kafkaTemplate.send("creatingSkillTopic", new SkillCreatedEvent(skill.getId()));
 
         return Optional.of(createdSkill);
     }
