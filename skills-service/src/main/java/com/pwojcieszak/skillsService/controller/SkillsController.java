@@ -1,8 +1,8 @@
-package com.pwojcieszak.controller;
+package com.pwojcieszak.skillsService.controller;
 
-import com.pwojcieszak.dto.SkillsResponse;
-import com.pwojcieszak.model.Skill;
-import com.pwojcieszak.service.SkillsService;
+import com.pwojcieszak.skillsService.dto.SkillsResponse;
+import com.pwojcieszak.skillsService.model.Skill;
+import com.pwojcieszak.skillsService.service.SkillsService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

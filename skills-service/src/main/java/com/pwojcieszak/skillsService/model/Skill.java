@@ -1,4 +1,4 @@
-package com.pwojcieszak.model;
+package com.pwojcieszak.skillsService.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;

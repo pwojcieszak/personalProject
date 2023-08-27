@@ -1,9 +1,9 @@
-package com.pwojcieszak.service;
+package com.pwojcieszak.skillsService.service;
 
-import com.pwojcieszak.dto.SkillsResponse;
-import com.pwojcieszak.event.SkillCreatedEvent;
-import com.pwojcieszak.model.Skill;
-import com.pwojcieszak.repository.SkillsRepository;
+import com.pwojcieszak.skillsService.dto.SkillsResponse;
+import com.pwojcieszak.skillsService.event.SkillCreatedEvent;
+import com.pwojcieszak.skillsService.model.Skill;
+import com.pwojcieszak.skillsService.repository.SkillsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;

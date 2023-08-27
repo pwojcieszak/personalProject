@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>frontService</artifactId>
+    <artifactId>front-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>frontService</name>
     <description>Demo project for Spring Boot</description>
