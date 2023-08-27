@@ -3,7 +3,6 @@ package com.pwojcieszak.frontService.controller;
 import com.pwojcieszak.frontService.dto.SkillsRequest;
 import com.pwojcieszak.frontService.service.FrontService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +30,6 @@ public class FrontController {
     }
 
     @GetMapping("/skills/delete/{name}")
-    @PreAuthorize("hasRole('client_admin')")
     public String deleteSkill(@PathVariable String name, RedirectAttributes redirectAttributes){
         boolean success = frontService.deleteSkill(name);
         if (success) {
