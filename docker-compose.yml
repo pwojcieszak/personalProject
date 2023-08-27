@@ -58,7 +58,7 @@ services:
   ## Eureka Server
   discovery-server:
     image: pwojcieszak/discovery-service:latest
-    container_name: discovery-service
+    container_name: discovery-server
     pull_policy: always
     ports:
       - "8761:8761"
@@ -81,7 +81,7 @@ services:
       - LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_SECURITY= TRACE
     depends_on:
       - zipkin
-      - discovery-service
+      - discovery-server
 
   ## Front-Service Docker Compose Config
   front-service:
@@ -92,7 +92,7 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
     depends_on:
       - zipkin
-      - discovery-service
+      - discovery-server
       - api-gateway
 
   ## Skills-Service Docker Compose Config
@@ -106,7 +106,7 @@ services:
     depends_on:
       - postgres-skills
       - broker
-      - discovery-service
+      - discovery-server
       - api-gateway
 
 
@@ -120,5 +120,5 @@ services:
     depends_on:
       - zipkin
       - broker
-      - discovery-service
+      - discovery-server
       - api-gateway
