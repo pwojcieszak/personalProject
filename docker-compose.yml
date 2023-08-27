@@ -1,6 +1,21 @@
 ---
 version: '3'
 services:
+  ## MySQL Docker Compose Config
+  postgres-skills:
+    container_name: postgres-skills
+    image: postgres
+    environment:
+      POSTGRES_DB: skills-service
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      PGDATA: /data/postgres
+    volumes:
+      - ./postgres-skills:/data/postgres
+    ports:
+      - "5432:5432"
+    restart: always
+
   ## Zipkin
   zipkin:
     image: openzipkin/zipkin
@@ -39,3 +54,71 @@ services:
     ports:
       - 1025:1025 # SMTP server ports
       - 8025:8025 # Web UI ports
+
+  ## Eureka Server
+  discovery-server:
+    image: pwojcieszak/discovery-service:latest
+    container_name: discovery-service
+    pull_policy: always
+    ports:
+      - "8761:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - zipkin
+
+  ## API Gateway
+  api-gateway:
+    image: pwojcieszak/api-gateway:latest
+    container_name: api-gateway
+    pull_policy: always
+    ports:
+      - "8080:8080"
+    expose:
+      - "8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_SECURITY= TRACE
+    depends_on:
+      - zipkin
+      - discovery-service
+
+  ## Front-Service Docker Compose Config
+  front-service:
+    container_name: front-service
+    image: pwojcieszak/front-service:latest
+    pull_policy: always
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - zipkin
+      - discovery-service
+      - api-gateway
+
+  ## Skills-Service Docker Compose Config
+  skills-service:
+    container_name: skills-service
+    image: pwojcieszak/skills-service:latest
+    pull_policy: always
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-skills:5432/skills-service
+    depends_on:
+      - postgres-skills
+      - broker
+      - discovery-service
+      - api-gateway
+
+
+  ## Notification-Service Docker Compose Config
+  notification-service:
+    container_name: notification-service
+    image: pwojcieszak/notification-service:latest
+    pull_policy: always
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - zipkin
+      - broker
+      - discovery-service
+      - api-gateway
