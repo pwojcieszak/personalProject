@@ -50,7 +50,6 @@ public class FrontController {
     @PostMapping("/aboutMe")
     public String saveStudent(@ModelAttribute("skill") SkillsRequest skillsRequest, RedirectAttributes redirectAttributes) {
         boolean success = frontService.createSkill(skillsRequest);
-        // TODO creates new skill and returns false. Need to fix
         if (success) {
             redirectAttributes.addFlashAttribute("result", "Successfully added skill");
         } else {
