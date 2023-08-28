@@ -19,26 +19,6 @@ import java.util.List;
 
 @Configuration
 public class SecurityConfig {
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-//        UserDetailsManager userDetailsManager =
-//                new InMemoryUserDetailsManager();
-//        userDetailsManager.createUser(
-//                User.withDefaultPasswordEncoder()
-//                        .username("user")
-//                        .password("user")
-//                        .roles("USER")
-//                        .build());
-//        userDetailsManager.createUser(
-//                User.withDefaultPasswordEncoder()
-//                        .username("admin")
-//                        .password("admin")
-//                        .roles("ADMIN")
-//                        .build());
-//        return new InMemoryUserDetailsManager();
-//    }
-
     @Bean
     public InMemoryUserDetailsManager userDetailsService() {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
@@ -65,13 +45,12 @@ public class SecurityConfig {
                 );
         http
                 .formLogin(customizer -> customizer
-                        .defaultSuccessUrl("/")
+                        .defaultSuccessUrl("http://localhost:8080/front/")
                 )
                 .httpBasic(Customizer.withDefaults())
                 .logout(customizer -> customizer
-                        .logoutSuccessUrl("/")
+                        .logoutSuccessUrl("http://localhost:8080/front/")
                 );
-
 
         return http.build();
     }

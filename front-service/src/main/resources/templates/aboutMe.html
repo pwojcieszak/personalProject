@@ -149,13 +149,18 @@
 					<td th:text = "${skill.name()}"></td>
 					<td th:text = "${skill.description()}"></td>
 					<td>
-						<a th:href="@{/front/skills/delete/{name}(name=${skill.name()})}" class="btn btn-danger">Delete</a>
+						<a sec:authorize="isAuthenticated()"
+						   th:href="@{/front/skills/delete/{name}(name=${skill.name()})}"
+						   class="btn btn-danger">Delete</a>
+						<a sec:authorize="isAnonymous()"
+						   th:href="@{/login}"
+						   class="btn btn-danger">Delete</a>
 					</td>
 				</tr>
 				</tbody>
 			</table>
-            <!--TODO after implementing api gateway implement add new option-->
-            <a th:href="@{/front/skills/new}" class="btn btn-primary btn-sm mb-3">Add Skill</a>
+            <a sec:authorize="isAuthenticated()" th:href="@{/front/skills/new}" class="btn btn-primary btn-sm mb-3">Add Skill</a>
+			<a sec:authorize="isAnonymous()" th:href="@{/login}" class="btn btn-primary btn-sm mb-3">Add Skill</a>
 			<p th:if="${result}">
 				<span th:text="${result}"></span>
 			</p>
