@@ -1,0 +1,23 @@
+global:
+  scrape_interval:     10s
+  evaluation_interval: 10s
+
+scrape_configs:
+  - job_name: 'front_service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['front-service:8080']
+        labels:
+          application: 'Front Service Application'
+  - job_name: 'skills_service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['skills-service:8080']
+        labels:
+          application: 'Skills Service Application'
+  - job_name: 'notification_service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['notification-service:8080']
+        labels:
+          application: 'Notification Service Application'
