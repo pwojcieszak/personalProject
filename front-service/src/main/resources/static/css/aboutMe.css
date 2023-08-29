@@ -98,7 +98,26 @@ label {
     font-size: 1rem;
 }
 
-/* Skills */
+/* About Project */
+#aboutProject p {
+    text-align: justify;
+}
+
+/* Front and SkillsService */
+#boot p {
+    text-align: justify;
+}
+
+#boot img{
+    margin: 4%;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /* Footer */
 .social-icon {
