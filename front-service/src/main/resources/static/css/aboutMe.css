@@ -118,6 +118,11 @@ label {
     align-items: center;
 }
 
+/* Gateway and Discovery */
+#gateway p {
+    text-align: justify;
+}
+
 
 /* Footer */
 .social-icon {

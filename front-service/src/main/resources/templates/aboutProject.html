@@ -82,9 +82,15 @@
 					<br>
 					<p>
 						I also wanted to use a database, so I decided
-						that I would create a SkillsService whose Entity model would be the "Skill" displayed in the "About
+						that I would create a SkillsService REST API whose Entity model would be the "Skill" displayed in the "About
 						Me" tab in the "List Of Skills" section. My database locally was MySQL, in the container I use
-						PostgreSQL. I use the Default JPA implementation which is Hibernate.
+						PostgreSQL. I use the Default JPA implementation which is Hibernate.</p>
+					<br>
+					<p>
+						As for the database operations I provided, it is listing all records, adding new ones and
+						deleting a record by skill name. Skills must have different names. When communicating between
+						services, I use Data Transfer Objects (DTO's): one for the response from the API and one for the
+						request directed to it.
 					</p>
 				</div>
 			</div>
@@ -95,6 +101,51 @@
 						<img th:src="@{../images/th.png}" alt="thymeleaf"/>
 						<img th:src="@{../images/jpa.png}" alt="jpa with hibernate"/>
 					</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Gateway and Discovery -->
+<section id="gateway" class="green-section">
+	<div class="container-fluid">
+		<h2 class="section-header">API Gateway and Discover Server</h2>
+		<div class="row">
+			<div class="col-lg-6 center">
+				<div>
+					<p>
+						With two services ready, the next step was to improve communication between them. Therefore, I
+						decided to integrate Discovery Server and API Gateway into the project.
+					</p>
+					<br>
+					<p>
+						I use Eureka Server as a service discovery and registration platform. It allows microservices to
+						dynamically register and detect other services on the network. This dynamic discovery simplifies
+						the process of load balancing and fault tolerance, as Eureka constantly updates and monitors
+						service availability. In my project, I allow several instances of SkillsService to run at the
+						same time, and Eureka actually sees this. The Eureka dashboard is available
+						<a href="http://localhost:8080/eureka/web" target="_blank">here</a>.
+					</p>
+					<br>
+					<p>
+						Complementing Discovery Server, Spring Cloud Gateway serves as my API gateway, offering a
+						configurable routing mechanism that allows us to manage traffic efficiently. This promotes a
+						cleaner and more modular approach to handling external requests and distributing them to the
+						appropriate microservices.
+					</p>
+					<br>
+					<p>
+						Using these two components, we ensure that our microservices can communicate effectively,
+						scale seamlessly and maintain high levels of availability and reliability.
+					</p>
+				</div>
+			</div>
+
+			<div class="col-lg-6 img-wrapper">
+				<img class="upper-image image" th:src="@{../images/eureka.png}" alt="Eureka logo"/>
+				<br>
+				<img th:src="@{../images/cloud.png}" alt="Gateway logo"/>
+
 			</div>
 		</div>
 	</div>
