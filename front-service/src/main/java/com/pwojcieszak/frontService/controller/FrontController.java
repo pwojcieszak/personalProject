@@ -29,6 +29,9 @@ public class FrontController {
         return "aboutMe";
     }
 
+    @GetMapping("/aboutProject")
+    public String getAboutProject(){ return "aboutProject"; }
+
     @GetMapping("/skills/delete/{name}")
     public String deleteSkill(@PathVariable String name, RedirectAttributes redirectAttributes){
         boolean success = frontService.deleteSkill(name);

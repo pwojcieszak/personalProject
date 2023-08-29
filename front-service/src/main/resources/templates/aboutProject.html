@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Piotr Wojcieszak</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link th:href="@{/css/aboutMe.css}" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/43124feaf5.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top">
+    <!-- Brand -->
+    <label>
+        <a class="navbar-brand" href="#">Piotr Wojcieszak</a>
+    </label>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <label>
+                    <a class="nav-link" th:href="@{/front/}">Main Page</a>
+                </label>
+            </li>
+            <li class="nav-item">
+                <label>
+                    <a class="nav-link" th:href="@{/front/aboutMe}">About Me</a>
+                </label>
+            </li>
+            <li class="nav-item">
+                <label>
+                    <a class="nav-link" th:href="@{/front/aboutProject}">About this Project</a>
+                </label>
+            </li>
+        </ul>
+    </div>
+	<a class="nav-item nav-link btn btn-warning" sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>
+	<a class="nav-item nav-link btn btn-success" sec:authorize="isAnonymous()" th:href="@{/login}">Login</a>
+</nav>
+<br>
+
+<!-- About Project -->
+<section id="aboutProject" class="white-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container">
+                <h2 class="section-header">Introduction</h2>
+                <br>
+                <p>
+					This project is intended to be a more attractive alternative to the traditional resume and to
+					showcase my skills I've gained by doing minor projects. I can't show everything here so I
+					encourage you to browse the rest of my portfolio on GitHub.
+					Below I will try to tell you one by one what technologies I use in this project.
+                </p>
+            </div>
+
+<!--            <div class="col-lg-6 flex-container img-wrapper">-->
+<!--				<iframe src="http://localhost:3000/d-solo/sOae4vCnk/spring-boot-statistics?orgId=1&refresh=5s&panelId=4" width="450" height="200"></iframe>-->
+<!--			</div>-->
+        </div>
+    </div>
+</section>
+
+<!-- Spring Boot -->
+<section id="boot" class="grey-section">
+	<div class="container-fluid">
+		<h2 class="section-header">Front- and Skills- Service</h2>
+		<div class="row">
+			<div class="col-lg-6 center">
+				<div>
+					<p>
+						To begin with, I use the latest Spring Boot 3.0. I started the project with the decision that
+						I wanted to use a microservices architecture. I knew
+						that I wanted to separate the front-end into one service. Thymeleaf is the template engine I use.
+					</p>
+					<br>
+					<p>
+						I also wanted to use a database, so I decided
+						that I would create a SkillsService whose Entity model would be the "Skill" displayed in the "About
+						Me" tab in the "List Of Skills" section. My database locally was MySQL, in the container I use
+						PostgreSQL. I use the Default JPA implementation which is Hibernate.
+					</p>
+				</div>
+			</div>
+
+			<div class="col-lg-6 img-wrapper">
+					<img class="upper-image image" th:src="@{../images/boot.png}" alt="Spring Boot logo"/>
+					<div>
+						<img th:src="@{../images/th.png}" alt="thymeleaf"/>
+						<img th:src="@{../images/jpa.png}" alt="jpa with hibernate"/>
+					</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<footer class="footer text-light text-center py-3">
+    <div class="container-fluid">
+        <a href="https://github.com/pwojcieszak?tab=repositories">
+            <i class="social-icon fa-brands fa-github fa-xl"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/piotr-wojcieszak-792693276/">
+            <i class="social-icon fa-brands fa-gitlab fa-xl"></i>
+        </a>
+        <a href="https://gitlab.com/users/piotrwojcieszak/projects">
+            <i class="social-icon fa-brands fa-linkedin fa-xl"></i>
+        </a>
+        <a href="mailto: piotrekw1002@gmail.com">
+            <i class="social-icon fa-solid fa-envelope fa-xl"></i>
+        </a>
+        <p>&copy; 2023 Piotr Wojcieszak. All rights reserved.</p>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+</body>
+</html>
