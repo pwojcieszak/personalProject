@@ -151,6 +151,62 @@
 	</div>
 </section>
 
+<!-- Spring Security -->
+<section id="security" class="white-section">
+	<div class="container-fluid">
+		<h2 class="section-header">Spring Security</h2>
+		<div class="row">
+			<div class="col-lg-6 center">
+				<div>
+					<p>
+						To ensure the security of the site I use Spring Security 6. I create user accounts in memory, initially I planned to use Keycloak however I had a problem with providing interactive user login and logout.
+					</p>
+					<br>
+					<p>
+						There are two accounts: ADMIN and USER. I limited access only to the "/front/skills/**" endpoints, which are used to create and delete skills from the "List of Skills" section. When you try to get to the secured address, a login panel will be displayed. Being logged in, it is possible to attempt again the operation of adding/deleting skills, however, only an account with the ADMIN role will be able to do so.
+					</p>
+					<br>
+					<p>
+						As for future plans, I'm thinking of adding a security feature that allows the user to delete only those skills that he/she created himself/herself (the exception is admin, who can delete everything). That being said, I would also like to provide the ability to create your own account. At the moment, I encourage you to log into the USER account using "user:user" and check the security features yourself.
+					</p>
+				</div>
+			</div>
+
+			<div class="col-lg-6 img-wrapper">
+				<img class="upper-image image" th:src="@{../images/security.png}" alt="Eureka logo"/>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Distributed tracing -->
+<section id="tracing" class="grey-section">
+	<div class="container-fluid">
+		<h2 class="section-header">Distributed Tracing</h2>
+		<div class="row">
+			<div class="col-lg-6 center">
+				<div>
+					<p>
+						To ensure the security of the site I use Spring Security 6. I create user accounts in memory, initially I planned to use Keycloak however I had a problem with providing interactive user login and logout.
+					</p>
+					<br>
+					<p>
+						There are two accounts: ADMIN and USER. I limited access only to the "/front/skills/**" endpoints, which are used to create and delete skills from the "List of Skills" section. When you try to get to the secured address, a login panel will be displayed. Being logged in, it is possible to attempt again the operation of adding/deleting skills, however, only an account with the ADMIN role will be able to do so.
+					</p>
+					<br>
+					<p>
+						As for future plans, I'm thinking of adding a security feature that allows the user to delete only those skills that he/she created himself/herself (the exception is admin, who can delete everything). That being said, I would also like to provide the ability to create your own account. At the moment, I encourage you to log into the USER account using "user:user" and check the security features yourself.
+					</p>
+				</div>
+			</div>
+
+			<div class="col-lg-6 img-wrapper">
+				<img class="upper-image image" th:src="@{../images/security.png}" alt="Eureka logo"/>
+			</div>
+		</div>
+	</div>
+</section>
+
 
 <footer class="footer text-light text-center py-3">
     <div class="container-fluid">

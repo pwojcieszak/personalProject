@@ -123,6 +123,11 @@ label {
     text-align: justify;
 }
 
+/* Security */
+#security p {
+    text-align: justify;
+}
+
 
 /* Footer */
 .social-icon {
