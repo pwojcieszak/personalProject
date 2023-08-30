@@ -55,6 +55,8 @@ label {
     display: flex;
     flex: 1;
     transition: transform 0.2s;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 #about p {
@@ -126,6 +128,33 @@ label {
 /* Security */
 #security p {
     text-align: justify;
+}
+
+/* Tracing */
+#tracing p {
+    text-align: justify;
+}
+
+.tracing_container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.image {
+    width: 100%;
+}
+
+.upper_image {
+    flex: 50%;
+    max-width: 150px;
+    max-height: 150px;
+    margin: 4%;
+}
+
+.lower_image {
+    flex: 100%;
 }
 
 

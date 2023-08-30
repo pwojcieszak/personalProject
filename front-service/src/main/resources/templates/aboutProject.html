@@ -67,7 +67,7 @@
     </div>
 </section>
 
-<!-- Spring Boot -->
+<!-- Front and Skills Service -->
 <section id="boot" class="grey-section">
 	<div class="container-fluid">
 		<h2 class="section-header">Front- and Skills- Service</h2>
@@ -96,7 +96,7 @@
 			</div>
 
 			<div class="col-lg-6 img-wrapper">
-					<img class="upper-image image" th:src="@{../images/boot.png}" alt="Spring Boot logo"/>
+					<img th:src="@{../images/boot.png}" alt="Spring Boot logo"/>
 					<div>
 						<img th:src="@{../images/th.png}" alt="thymeleaf"/>
 						<img th:src="@{../images/jpa.png}" alt="jpa with hibernate"/>
@@ -142,7 +142,7 @@
 			</div>
 
 			<div class="col-lg-6 img-wrapper">
-				<img class="upper-image image" th:src="@{../images/eureka.png}" alt="Eureka logo"/>
+				<img th:src="@{../images/eureka.png}" alt="Eureka logo"/>
 				<br>
 				<img th:src="@{../images/cloud.png}" alt="Gateway logo"/>
 
@@ -173,7 +173,7 @@
 			</div>
 
 			<div class="col-lg-6 img-wrapper">
-				<img class="upper-image image" th:src="@{../images/security.png}" alt="Eureka logo"/>
+				<img th:src="@{../images/security.png}" alt="Security logo"/>
 			</div>
 		</div>
 	</div>
@@ -184,24 +184,35 @@
 	<div class="container-fluid">
 		<h2 class="section-header">Distributed Tracing</h2>
 		<div class="row">
-			<div class="col-lg-6 center">
+			<div class="col-lg-5 center">
 				<div>
 					<p>
-						To ensure the security of the site I use Spring Security 6. I create user accounts in memory, initially I planned to use Keycloak however I had a problem with providing interactive user login and logout.
+						I use Micrometer and Zipkin to track the flow of requests between microservices.
 					</p>
 					<br>
 					<p>
-						There are two accounts: ADMIN and USER. I limited access only to the "/front/skills/**" endpoints, which are used to create and delete skills from the "List of Skills" section. When you try to get to the secured address, a login panel will be displayed. Being logged in, it is possible to attempt again the operation of adding/deleting skills, however, only an account with the ADMIN role will be able to do so.
+						Micrometer is a monitoring tool that helps developers track the performance of their microservices. It does this by collecting and displaying data on things like response times, errors and number of requests.
 					</p>
 					<br>
 					<p>
-						As for future plans, I'm thinking of adding a security feature that allows the user to delete only those skills that he/she created himself/herself (the exception is admin, who can delete everything). That being said, I would also like to provide the ability to create your own account. At the moment, I encourage you to log into the USER account using "user:user" and check the security features yourself.
+						Zipkin, on the other hand, is a tracking tool useful when working with microservices. This tool collects data generated thanks to Micrometer from different parts of the system and then displays it in a user-friendly way. This way we can understand how long each request is being processed and pinpoint a bottleneck or other problem.
+					</p>
+					<br>
+					<p>
+						In my program, I use an additional custom tracer called "SkillsServiceCall" in FrontService. I use it at the time of a call to another service to make reading information from Zipkin more transparent. Zipkin is available <a href="http://localhost:9411" target="_blank">here</a>.
 					</p>
 				</div>
 			</div>
 
-			<div class="col-lg-6 img-wrapper">
-				<img class="upper-image image" th:src="@{../images/security.png}" alt="Eureka logo"/>
+			<div class="col-lg-1"></div>
+
+			<div class="col-lg-6 tracing_container">
+				<img class="image upper_image" th:src="@{../images/micro.png}" alt="Micrometer logo"/>
+				<img class="image upper_image" th:src="@{../images/zipkin.png}" alt="Zipkin logo"/>
+				<br>
+				<br>
+				<img class="image lower_image" th:src="@{../images/zipkin_screen.jpg}" alt="Zipkin Screen"/>
+				<figcaption>Sample request traced by Zipkin</figcaption>
 			</div>
 		</div>
 	</div>
