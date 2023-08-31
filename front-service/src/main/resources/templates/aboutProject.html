@@ -59,10 +59,6 @@
 					Below I will try to tell you one by one what technologies I use in this project.
                 </p>
             </div>
-
-<!--            <div class="col-lg-6 flex-container img-wrapper">-->
-<!--				<iframe src="http://localhost:3000/d-solo/sOae4vCnk/spring-boot-statistics?orgId=1&refresh=5s&panelId=4" width="450" height="200"></iframe>-->
-<!--			</div>-->
         </div>
     </div>
 </section>
@@ -206,13 +202,94 @@
 
 			<div class="col-lg-1"></div>
 
-			<div class="col-lg-6 tracing_container">
+			<div class="col-lg-6 screen_container">
 				<img class="image upper_image" th:src="@{../images/micro.png}" alt="Micrometer logo"/>
 				<img class="image upper_image" th:src="@{../images/zipkin.png}" alt="Zipkin logo"/>
 				<br>
 				<br>
 				<img class="image lower_image" th:src="@{../images/zipkin_screen.jpg}" alt="Zipkin Screen"/>
 				<figcaption>Sample request traced by Zipkin</figcaption>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Kafka -->
+<section id="kafka" class="green-section">
+	<div class="container-fluid">
+		<h2 class="section-header">Email notifications</h2>
+		<div class="row">
+			<div class="col-lg-5 center">
+				<div>
+					<p>
+						At this stage I was missing an interesting practical functionality. Therefore, I decided to implement event streaming on the Kafka platform.
+					</p>
+					<br>
+					<p>
+						What is event streaming? As explained on Kafka's official website, event streaming is the practice of capturing real-time data from event sources, storing it for later retrieval, processing and routing it to various target technologies as needed.
+					</p>
+					<br>
+					<p>
+						I used Kafka to respond to a new skill creation event by sending an email to the administrator with the ID of the created object.
+					</p>
+					<br>
+					<p>
+						Locally, I used MailHog, an email testing tool that has its own SMTP server. It catches all email sent to it and stores them for display in a web-based user interface for view. MailHog's interface is available <a href="http://localhost:8025" target="_blank">here</a>.
+					</p>
+				</div>
+			</div>
+
+			<div class="col-lg-1"></div>
+
+			<div class="col-lg-6 screen_container">
+				<img class="image upper_image" th:src="@{../images/kafka.png}" alt="Kafka logo"/>
+				<img class="image upper_image" th:src="@{../images/mailhog.png}" alt="MailHog logo"/>
+				<br>
+				<br>
+				<img class="image lower_image" th:src="@{../images/mailhog_screen.jpg}" alt="MailHog Screen"/>
+				<figcaption>Email received in MailHog</figcaption>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Monitoring -->
+<section id="monitoring" class="white-section">
+	<div class="container-fluid">
+		<h2 class="section-header">Monitoring</h2>
+		<div class="row">
+			<div class="col-lg-6 center">
+				<div>
+					<p>
+						It was high time to incorporate a real-time monitoring infrastructure. For this task, I chose Prometheus with Grafana.
+					</p>
+					<br>
+					<p>
+						Prometheus is in some ways a similar tool to Micrometer, it provides us with powerful data collection, including metrics related to system performance and resource utilization. It even has its own query language called PromQL, which is used in Grafana.
+					</p>
+					<br>
+					<p>
+						Grafana provides a dynamic and visually appealing dashboarding platform, allowing us to create informative and customizable visualizations of the metrics collected by Prometheus. This allows us to effortlessly track key performance indicators and quickly respond to anomalies.
+					</p>
+					<br>
+					<p>
+						Before implementing real-time monitoring, I had to dockerize the entire application to make it work. Naturally, the docker-compose file was mandatory in this case. Dockerization encapsulates each component of our application and its dependencies in isolated containers, ensuring consistency across environments. The container configuration is available for view on my <a href="https://github.com/pwojcieszak/personalProject/blob/main/docker-compose.yml" target="_blank">GitHub repository</a>.
+					</p>
+					<br>
+					<p>
+						The Prometheus interface is available <a href="http://localhost:9090/targets?search=" target="_blank">here</a> and the Grafana dashboard is available <a href="http://localhost:3000/d/sOae4vCnk/spring-boot-statistics?orgId=1&refresh=5s&var-instance=front-service:8080&var-application=Front%20Service%20Application&var-hikaricp=&var-memory_pool_heap=All&var-memory_pool_nonheap=All" target="_blank">here</a>.
+					</p>
+				</div>
+			</div>
+
+			<div class="col-lg-6 screen_container">
+				<img class="image upper_image" th:src="@{../images/docker.png}" alt="Docker logo"/>
+				<img class="image upper_image" th:src="@{../images/prometheus.png}" alt="Prometheus logo"/>
+				<img class="image upper_image" th:src="@{../images/grafana.png}" alt="Grafana logo"/>
+				<br>
+				<br>
+				<iframe src="http://localhost:3000/d-solo/sOae4vCnk/spring-boot-statistics?orgId=1&refresh=5s&panelId=96" width="450" height="200"></iframe>
+				<figcaption>Example Grafana's live graph displaying load average of FrontService service</figcaption>
 			</div>
 		</div>
 	</div>
