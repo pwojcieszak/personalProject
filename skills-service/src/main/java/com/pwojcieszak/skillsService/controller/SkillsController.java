@@ -19,7 +19,7 @@ public class SkillsController {
     private final SkillsService skillsService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<SkillsResponse>> getAllSkils(){
+    public ResponseEntity<List<SkillsResponse>> getAllSkills(){
         List<SkillsResponse> skills = skillsService.findAllSkills();
         return new ResponseEntity<>(skills, HttpStatus.OK);
     }
