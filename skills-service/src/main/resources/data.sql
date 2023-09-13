@@ -1,1 +1,12 @@
-CREATE DATABASE IF NOT EXISTS 'skills-service';
+INSERT INTO `skills-service`.`skills` (`id`, `category`, `description`, `name`) VALUES ('-11', 'Language', 'Native', 'Polish'),
+                                                                                       ('-10', 'Language', 'C1', 'English'),
+                                                                                       ('-9', 'Language', 'A2', 'German'),
+                                                                                       ('-8', 'Coding', 'It was my first coding language, I used it on plenty on occasions during studies and high school', 'C++'),
+                                                                                       ('-7', 'Coding', 'I used Python for data analysis and visualization', 'Python'),
+                                                                                       ('-6', 'Web Design', 'During high school, our web development subjects focused on using these languages', 'HTML, CSS, plain JS'),
+                                                                                       ('-5', 'Web Design', 'Used during apprenticeship during which I created two static websites, one mentioned in "Experience" section', 'WordPress'),
+                                                                                       ('-4', 'Coding', 'Solid foundation, multithreading, synchronization, inheritance, interfaces, abstract classes', 'Java'),
+                                                                                       ('-3', 'Frameworks', 'Spring Boot, Spring Security, JPA, Thymeleaf', 'Spring'),
+                                                                                       ('-2', 'Frameworks', 'Netflix Eureka, API Gateway, Zipkin, Micrometer, Kafka, Grafana', 'Microservices Frameworks'),
+                                                                                       ('-1', 'Development', 'Knowledge of creating multi-stage Dockerfiles, docker-compose, integrating with docker-hub', 'Docker'),
+                                                                                       ('0', 'Databases', 'Used during database classes in high school', 'MySQL');
