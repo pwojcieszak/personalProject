@@ -207,7 +207,7 @@
 				<img class="image upper_image" th:src="@{../images/zipkin.png}" alt="Zipkin logo"/>
 				<br>
 				<br>
-				<img class="image lower_image" th:src="@{../images/zipkin_screen.jpg}" alt="Zipkin Screen"/>
+				<img class="image lower_image" th:src="@{../images/zipkin_screen.JPG}" alt="Zipkin Screen"/>
 				<figcaption>Sample request traced by Zipkin</figcaption>
 			</div>
 		</div>
@@ -246,7 +246,7 @@
 				<img class="image upper_image" th:src="@{../images/mailhog.png}" alt="MailHog logo"/>
 				<br>
 				<br>
-				<img class="image lower_image" th:src="@{../images/mailhog_screen.jpg}" alt="MailHog Screen"/>
+				<img class="image lower_image" th:src="@{../images/mailhog_screen.JPG}" alt="MailHog Screen"/>
 				<figcaption>Email received in MailHog</figcaption>
 			</div>
 		</div>
@@ -273,7 +273,7 @@
 					</p>
 					<br>
 					<p>
-						Before implementing real-time monitoring, I had to dockerize the entire application to make it work. Naturally, the docker-compose file was mandatory in this case. Dockerization encapsulates each component of our application and its dependencies in isolated containers, ensuring consistency across environments. The container configuration is available for view on my <a href="https://github.com/pwojcieszak/personalProject/blob/main/docker-compose.yml" target="_blank">GitHub repository</a>.
+						Before implementing real-time monitoring, I had to dockerize the entire application to make it work. Naturally, the docker-compose file was mandatory in this case. I also used Jib which allows us to build container images directly from Java code, without needing to manually create a Dockerfile. Dockerization encapsulates each component of our application and its dependencies in isolated containers, ensuring consistency across environments. The container configuration is available for view on my <a href="https://github.com/pwojcieszak/personalProject/blob/main/docker-compose.yml" target="_blank">GitHub repository</a>.
 					</p>
 					<br>
 					<p>
@@ -290,6 +290,26 @@
 				<br>
 				<iframe src="http://localhost:3000/d-solo/sOae4vCnk/spring-boot-statistics?orgId=1&refresh=5s&panelId=96" width="450" height="200"></iframe>
 				<figcaption>Example Grafana's live graph displaying load average of FrontService service</figcaption>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Deployment -->
+<section id="deployment" class="grey-section">
+	<div class="container-fluid">
+		<h2 class="section-header">Deployment</h2>
+		<div class="row">
+			<div class="col-lg-6 center">
+				<div>
+					<p>
+						Finally, with the application ready, I was able to deploy it. For this I used the Microsoft Azure cloud patform. I used the "Web App for Containers" service, which allowed me to run the application from a Docker Compose file and thus use my services images shared on the Docker Hub.
+					</p>
+				</div>
+			</div>
+
+			<div class="col-lg-6 screen_container">
+				<img class="image upper_image" th:src="@{../images/azure.png}" alt="Azure logo"/>
 			</div>
 		</div>
 	</div>
