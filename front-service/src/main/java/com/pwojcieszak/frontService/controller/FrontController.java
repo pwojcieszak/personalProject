@@ -3,6 +3,7 @@ package com.pwojcieszak.frontService.controller;
 import com.pwojcieszak.frontService.dto.SkillsRequest;
 import com.pwojcieszak.frontService.service.FrontService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/front")
 public class FrontController {
+    @Value("${spring.web.urlBaseName}")
+    private String urlBaseName;
     private final FrontService frontService;
     @Autowired
     public FrontController(FrontService frontService) {
@@ -40,7 +43,7 @@ public class FrontController {
         } else {
             redirectAttributes.addFlashAttribute("result", "Something went wrong");
         }
-        return "redirect:http://localhost:8080/front/aboutMe";
+        return "redirect:" + urlBaseName + "/front/aboutMe";
     }
 
     @GetMapping("/skills/new")
@@ -58,7 +61,7 @@ public class FrontController {
         } else {
             redirectAttributes.addFlashAttribute("result", "Something went wrong");
         }
-        return "redirect:http://localhost:8080/front/aboutMe";
+        return "redirect:" + urlBaseName + "/front/aboutMe";
     }
 
 }

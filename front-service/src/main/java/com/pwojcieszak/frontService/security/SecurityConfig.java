@@ -1,5 +1,6 @@
 package com.pwojcieszak.frontService.security;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -19,6 +20,8 @@ import java.util.List;
 
 @Configuration
 public class SecurityConfig {
+    @Value("${spring.web.urlBaseName}")
+    private String urlBaseName;
     @Bean
     public InMemoryUserDetailsManager userDetailsService() {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
@@ -45,11 +48,11 @@ public class SecurityConfig {
                 );
         http
                 .formLogin(customizer -> customizer
-                        .defaultSuccessUrl("http://localhost:8080/front/")
+                        .defaultSuccessUrl(urlBaseName + "/front/")
                 )
                 .httpBasic(Customizer.withDefaults())
                 .logout(customizer -> customizer
-                        .logoutSuccessUrl("http://localhost:8080/front/")
+                        .logoutSuccessUrl(urlBaseName + "/front/")
                 );
 
         return http.build();
