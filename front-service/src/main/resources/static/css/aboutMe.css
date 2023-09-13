@@ -71,7 +71,7 @@ label {
     margin: auto;
 }
 
-/* works */
+/* Work Experience */
 .work-text {
     font-size: 2rem;
     line-height: 1.5;
@@ -98,6 +98,11 @@ label {
 
 .certificates p {
     font-size: 1rem;
+}
+
+/* Skills */
+.strong {
+    font-weight: 600;
 }
 
 /* About Project */
@@ -162,8 +167,13 @@ label {
     text-align: justify;
 }
 
-/* Kafka */
+/* Monitoring */
 #monitoring p {
+    text-align: justify;
+}
+
+/* Deployment */
+#deployment p {
     text-align: justify;
 }
 
