@@ -58,7 +58,8 @@
 					encourage you to browse the rest of my portfolio on GitHub.
 					Below I will try to tell you one by one what technologies I use in this project.
                 </p>
-            </div>
+				<p th:if="${#arrays.contains(@environment.getActiveProfiles(),'azure')}" class="warning">Note that the full functionality of the site is unavailable on the deployment. Please run local for the full experience. Instructions on github.</p>
+			</div>
         </div>
     </div>
 </section>
@@ -120,7 +121,8 @@
 						the process of load balancing and fault tolerance, as Eureka constantly updates and monitors
 						service availability. In my project, I allow several instances of SkillsService to run at the
 						same time, and Eureka actually sees this. The Eureka dashboard is available
-						<a href="http://localhost:8080/eureka/web" target="_blank">here</a>.
+						<a th:unless="${#arrays.contains(@environment.getActiveProfiles(), 'docker')}" th:href="@{/eureka/web}" target="_blank">here</a>
+						<a th:if="${#arrays.contains(@environment.getActiveProfiles(), 'docker')}" href="http://host.docker.internal:8761/" target="_blank">here</a>.
 					</p>
 					<br>
 					<p>

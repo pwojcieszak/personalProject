@@ -25,6 +25,10 @@ label {
     display: block;
 }
 
+.warning{
+    color: red;
+}
+
 /* Containers */
 .container-fluid{
     padding: 7% 15%;

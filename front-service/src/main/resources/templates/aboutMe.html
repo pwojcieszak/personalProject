@@ -132,6 +132,7 @@
 <section id="skills" class="white-section">
 	<div class="container-fluid">
 		<h2 class="section-header">List of Skills</h2>
+        <p th:if="${#arrays.contains(@environment.getActiveProfiles(),'azure')}" class="warning">Note: Functionality not available on deployment. Full functionality available after local deployment.</p>
 		<div class="container">
 			<table class="table table-striped table-bordered">
 				<thead class="table-dark">
