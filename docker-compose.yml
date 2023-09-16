@@ -62,6 +62,8 @@ services:
     pull_policy: always
     ports:
       - "8761:8761"
+    expose:
+      - "8761"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
     depends_on:
