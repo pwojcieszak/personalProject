@@ -1,4 +1,5 @@
-# My Personal Project
+## Piotr Wojcieszak
+# [My Personal Project](https://personal-project-pwojcieszak.azurewebsites.net/)
 Project is deployed on Azure under this link: https://personal-project-pwojcieszak.azurewebsites.net/. Deployed version has limited functionality, I highly recommend runnning project locally using docker-compose.
 <br><br>
 This project is intended to be a more attractive alternative to the traditional resume and to showcase my skills I've gained by doing minor projects. I can't show everything here so I encourage you to browse the rest of my portfolio on GitHub. On the "About this project" subpage, I describe one by one all the technologies used in the project.
